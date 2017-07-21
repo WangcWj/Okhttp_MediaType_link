@@ -1,6 +1,7 @@
 # Okhttp_MediaType_link
-# https://www.iana.org/assignments/media-types/media-types.xhtml#text   
-## 常见类型有   
+# https://www.iana.org/assignments/media-types/media-types.xhtml#text     
+# https://baike.baidu.com/item/MIME/2900607?fr=aladdin  百度百科
+## 常见类型有   
   超文本标记语言文本 .html text/html   
   
   xml文档 .xml text/xml   
