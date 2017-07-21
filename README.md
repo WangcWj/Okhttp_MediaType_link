@@ -1,7 +1,7 @@
 # Okhttp_MediaType_link
 # https://www.iana.org/assignments/media-types/media-types.xhtml#text     
 # https://baike.baidu.com/item/MIME/2900607?fr=aladdin  百度百科   
-# RequestBody.create(MediaType.parse("text/plain"),new File(wnag.txt));标记文件为txt格式的文件,以下是常用类型
+  RequestBody.create(MediaType.parse("text/plain"),new File(wnag.txt));标记文件为txt格式的文件,以下是常用类型
 ## 常见类型有   
  
   任意的二进制数据 application/octet-stream   
@@ -498,9 +498,9 @@
                 .setType(MultipartBody.FORM)
                  .addFormDataPart("file","wang.jpg",requestBody)
                  .addFormDataPart("file","chao.jpg",requestBody2)
-                .build();   
-```    
-# 如果RequestBody里面有文件的话就需要设置setType(MultipartBody.FORM),可以设置的类型为:   
+                .build():
+``` 
+# 如果RequestBody里面有文件的话就需要设置setType(MultipartBody.FORM),可以设置的类型为:   
 
    MIXED = MediaType.parse("multipart/mixed");   
    
