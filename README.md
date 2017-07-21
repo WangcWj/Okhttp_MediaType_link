@@ -488,8 +488,8 @@
     { ".z", "application/x-compress" },[1] 
     { ".zac", "application/x-zaurus-zac" },
     { ".zip", "application/zip" },
-    { ".json", "application/json" },
-```
+    { ".json", "application/json" }``` 
+
 # 在Okhttp上传多文件的时候,会用到MultipartBody,基本用法为:   
 ```
     MultipartBody multipartBody = new MultipartBody.Builder()
@@ -498,8 +498,7 @@
                 .setType(MultipartBody.FORM)
                  .addFormDataPart("file","wang.jpg",requestBody)
                  .addFormDataPart("file","chao.jpg",requestBody2)
-                .build():
-``` 
+                .build();```
 # 如果RequestBody里面有文件的话就需要设置setType(MultipartBody.FORM),可以设置的类型为:   
 
    MIXED = MediaType.parse("multipart/mixed");   
