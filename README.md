@@ -1,44 +1,12 @@
 # Okhttp_MediaType_link
 # https://www.iana.org/assignments/media-types/media-types.xhtml#text     
-# https://baike.baidu.com/item/MIME/2900607?fr=aladdin  百度百科
+# https://baike.baidu.com/item/MIME/2900607?fr=aladdin  百度百科   
+# RequestBody.create(MediaType.parse("text/plain"),new File(wnag.txt));标记文件为txt格式的文件,以下是常用类型
 ## 常见类型有   
-  超文本标记语言文本 .html text/html   
-  
-  xml文档 .xml text/xml   
-  
-  XHTML文档 .xhtml application/xhtml+xml   
-  
-  普通文本 .txt text/plain   
-  
-  RTF文本 .rtf application/rtf   
-  
-  PDF文档 .pdf application/pdf   
-  
-  Microsoft Word文件 .word application/msword   
-  
-  PNG图像 .png image/png   
-  
-  GIF图形 .gif image/gif   
-  
-  JPEG图形 .jpeg,.jpg image/jpeg   
-  
-  au声音文件 .au audio/basic   
-  
-  MIDI音乐文件 mid,.midi audio/midi,audio/x-midi   
-  
-  RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio   
-  
-  MPEG文件 .mpg,.mpeg video/mpeg   
-  
-  AVI文件 .avi video/x-msvideo   
-  
-  GZIP文件 .gz application/x-gzip   
-  
-  TAR文件 .tar application/x-tar   
-  
+ 
   任意的二进制数据 application/octet-stream   
 ```
-      { ".323", "text/h323" },
+    { ".323", "text/h323" },
     { ".3gp", "video/3gpp" },
     { ".aab", "application/x-authoware-bin" },
     { ".aam", "application/x-authoware-map" },
@@ -522,5 +490,28 @@
     { ".zip", "application/zip" },
     { ".json", "application/json" },
 ```
-  
-  
+# 在Okhttp上传多文件的时候,会用到MultipartBody,基本用法为:   
+```
+    MultipartBody multipartBody = new MultipartBody.Builder()
+                //最后参数被封装成Part对象  ,"file" 和 "wang.ipg" 被封装成Part的Healders 和Part的body
+                //最后转写入sink里面
+                .setType(MultipartBody.FORM)
+                 .addFormDataPart("file","wang.jpg",requestBody)
+                 .addFormDataPart("file","chao.jpg",requestBody2)
+                .build();   
+```    
+# 如果RequestBody里面有文件的话就需要设置setType(MultipartBody.FORM),可以设置的类型为:   
+
+   MIXED = MediaType.parse("multipart/mixed");   
+   
+   ALTERNATIVE = MediaType.parse("multipart/alternative");   
+    
+   DIGEST = MediaType.parse("multipart/digest");   
+   
+   PARALLEL = MediaType.parse("multipart/parallel");   
+   
+   FORM = MediaType.parse("multipart/form-data");   
+# 这些是RFC1867对http协议的新规定,在此协议之后才可以传递文件.http的头信息之前的content-type: application/x-www-form-urlencoded 改变为 content-type:    
+# multipart/form-data; +空格+boundary=---------------------------7d52b133509e2   
+
+  
